@@ -67,7 +67,8 @@ namespace ShareX.HistoryLib
 
             defaultTitle = Text;
 
-            tstbSearch.TextBox.HandleCreated += (sender, e) => tstbSearch.TextBox.SetWatermark(Resources.HistoryForm_Search_Watermark, true);
+            //tstbSearch.TextBox.HandleCreated += (sender, e) => tstbSearch.TextBox.SetWatermark(Resources.HistoryForm_Search_Watermark, true);
+            tstbSearch.TextBox.HandleCreated += (sender, e) => tstbSearch.TextBox.SetWatermark("文件名", true);
 
             if (Settings.RememberSearchText)
             {
@@ -91,9 +92,20 @@ namespace ShareX.HistoryLib
         {
             UpdateSearchText();
             ilvImages.Items.Clear();
-            IEnumerable<HistoryItem> historyItems = GetHistoryItems(mockData);
-            ImageListViewItem[] ilvItems = historyItems.Select(hi => new ImageListViewItem(hi.FilePath) { Tag = hi }).ToArray();
-            ilvImages.Items.AddRange(ilvItems);
+            //IEnumerable<HistoryItem> historyItems = GetHistoryItems(mockData);
+            var files = Directory.GetFiles(HistoryPath, "*.*", SearchOption.AllDirectories).Where(s => s.EndsWith(".jpg") ||
+                                                                                                      s.EndsWith(".png") ||
+                                                                                                      s.EndsWith(".gif") ||
+                                                                                                      s.EndsWith(".bmp") ||
+                                                                                                      s.EndsWith(".TIFF")||
+                                                                                                      s.EndsWith(".tif") ||
+                                                                                                      s.EndsWith(".mp4")).ToArray();
+            if (!string.IsNullOrWhiteSpace(tstbSearch.Text))
+            {
+                files = files.Where(n=>n.Contains(tstbSearch.Text)).ToArray();
+            }
+            //ImageListViewItem[] ilvItems = historyItems.Select(hi => new ImageListViewItem(hi.FilePath) { Tag = hi }).ToArray();
+            ilvImages.Items.AddRange(files);
         }
 
         private void UpdateSearchText()
@@ -158,7 +170,8 @@ namespace ShareX.HistoryLib
 
         private HistoryItem[] him_GetHistoryItems()
         {
-            return ilvImages.SelectedItems.Select(x => x.Tag as HistoryItem).ToArray();
+            return ilvImages.SelectedItems.Select(x =>new HistoryItem { FileName=x.FileName,FilePath=x.FileName,Type=x.FileType }).ToArray();
+            //return ilvImages.SelectedItems.Select(x => x.Tag as HistoryItem).ToArray();
         }
 
         #region Form events
@@ -220,8 +233,17 @@ namespace ShareX.HistoryLib
 
                 filteredImages.Add(imageFilePath);
             }
-
-            ImageViewer.ShowImage(filteredImages.ToArray(), modifiedImageIndex);
+            var file = filteredImages.ToArray()[modifiedImageIndex];
+            if (File.Exists(file))
+            {
+                var imageFrom = new string[] { ".jpg", ".png", ".gif", ".bmp", ".TIFF", ".tif" };
+                if (imageFrom.Contains(Path.GetExtension(file)))
+                {
+                    ImageViewer.ShowImage(filteredImages.ToArray(), modifiedImageIndex);
+                }
+                else
+                    System.Diagnostics.Process.Start(file);
+            }
         }
 
         private void tstbSearch_KeyDown(object sender, KeyEventArgs e)

@@ -35,7 +35,6 @@
             this.chIcon = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chDateTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chFilename = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chURL = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tsHistory = new System.Windows.Forms.ToolStrip();
             this.tslSearch = new System.Windows.Forms.ToolStripLabel();
             this.tstbSearch = new System.Windows.Forms.ToolStripTextBox();
@@ -103,8 +102,7 @@
             this.lvHistory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.chIcon,
             this.chDateTime,
-            this.chFilename,
-            this.chURL});
+            this.chFilename});
             resources.ApplyResources(this.lvHistory, "lvHistory");
             this.lvHistory.FullRowSelect = true;
             this.lvHistory.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -132,14 +130,11 @@
             // 
             resources.ApplyResources(this.chFilename, "chFilename");
             // 
-            // chURL
-            // 
-            resources.ApplyResources(this.chURL, "chURL");
-            // 
             // tsHistory
             // 
             resources.ApplyResources(this.tsHistory, "tsHistory");
             this.tsHistory.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tsHistory.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.tsHistory.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tslSearch,
             this.tstbSearch,
@@ -418,7 +413,6 @@
         private ShareX.HelpersLib.MyListView lvHistory;
         private System.Windows.Forms.ColumnHeader chFilename;
         private System.Windows.Forms.ColumnHeader chDateTime;
-        private System.Windows.Forms.ColumnHeader chURL;
         private System.Windows.Forms.ColumnHeader chIcon;
         private ShareX.HelpersLib.SplitContainerCustomSplitter scMain;
         private HelpersLib.MyPictureBox pbThumbnail;

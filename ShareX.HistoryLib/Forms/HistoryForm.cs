@@ -76,14 +76,13 @@ namespace ShareX.HistoryLib
             him = new HistoryItemManager(uploadFile, editImage, pinToScreen, true);
             him.GetHistoryItems += him_GetHistoryItems;
             lvHistory.ContextMenuStrip = him.cmsHistory;
-
             pbThumbnail.Reset();
             lvHistory.FillLastColumn();
             scHistoryItemInfo.SplitterWidth = 7; // Because of bug must be assigned here again
             scHistoryItemInfo.Panel2Collapsed = true;
 
-            tstbSearch.TextBox.HandleCreated += (sender, e) => tstbSearch.TextBox.SetWatermark(Resources.HistoryForm_Search_Watermark, true);
-
+            //tstbSearch.TextBox.HandleCreated += (sender, e) => tstbSearch.TextBox.SetWatermark(Resources.HistoryForm_Search_Watermark, true);
+            tstbSearch.TextBox.HandleCreated += (sender, e) => tstbSearch.TextBox.SetWatermark("文件名", true);
             if (Settings.RememberSearchText)
             {
                 tstbSearch.Text = Settings.SearchText;
@@ -154,8 +153,18 @@ namespace ShareX.HistoryLib
             {
                 history = new HistoryManagerJSON(HistoryPath);
             }
-
-            List<HistoryItem> historyItems = await history.GetHistoryItemsAsync();
+            var files = Directory.GetFiles(HistoryPath, "*.*", SearchOption.AllDirectories).Where(s => s.EndsWith(".jpg") ||
+                                                                                                     s.EndsWith(".png") ||
+                                                                                                     s.EndsWith(".gif") ||
+                                                                                                     s.EndsWith(".bmp") ||
+                                                                                                     s.EndsWith(".TIFF") ||
+                                                                                                     s.EndsWith(".tif"));
+            List<HistoryItem> historyItems = files.Select(n=>new HistoryItem { FileName= Path.GetFileName(n),DateTime=new FileInfo(n).CreationTime, FilePath=n,Type=Path.GetExtension(n)}).ToList();
+            if (!string.IsNullOrWhiteSpace(tstbSearch.Text)&& historyItems!=null&& historyItems.Count>0)
+            {
+                historyItems = historyItems.Where(n=>n.FileName.Contains(tstbSearch.Text)).ToList();
+            }
+            //List<HistoryItem> historyItems = await history.GetHistoryItemsAsync();
             historyItems.Reverse();
             return historyItems.ToArray();
         }

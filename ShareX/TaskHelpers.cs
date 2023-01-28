@@ -421,7 +421,7 @@ namespace ShareX
 
         public static string GetFileName(TaskSettings taskSettings, string extension = null, TaskMetadata metadata = null)
         {
-            string fileName;
+            string fileName = null;
 
             NameParser nameParser = new NameParser(NameParserType.FileName)
             {
@@ -430,7 +430,6 @@ namespace ShareX
                 MaxTitleLength = taskSettings.AdvancedSettings.NamePatternMaxTitleLength,
                 CustomTimeZone = taskSettings.UploadSettings.UseCustomTimeZone ? taskSettings.UploadSettings.CustomTimeZone : null
             };
-
             if (metadata != null)
             {
                 if (metadata.Image != null)
@@ -441,6 +440,22 @@ namespace ShareX
 
                 nameParser.WindowText = metadata.WindowTitle;
                 nameParser.ProcessName = metadata.ProcessName;
+                if (!string.IsNullOrWhiteSpace(metadata.WindowTitle))
+                {
+                    if (metadata.WindowTitle.StartsWith("ShareX") && metadata.WindowTitle.Contains("-"))
+                    {
+                        fileName = metadata.WindowTitle.Split('-').LastOrDefault() + " ";
+                    }
+                    else if (metadata.WindowTitle.Length > metadata.ProcessName.Length && File.Exists(metadata.WindowTitle.Substring(0, metadata.WindowTitle.Length - metadata.ProcessName.Length - 2).Trim()))
+                    {
+                        fileName = Path.GetFileNameWithoutExtension(metadata.WindowTitle.Substring(0, metadata.WindowTitle.Length - metadata.ProcessName.Length - 2).Trim()) + " ";
+                    }
+                    else// if (metadata.ProcessName == "chrome"|| metadata.ProcessName == "msedge")
+                    {
+                        fileName = metadata.WindowTitle + " ";
+                    }
+
+                }
             }
 
             //if (!string.IsNullOrEmpty(taskSettings.UploadSettings.NameFormatPatternActiveWindow) && !string.IsNullOrEmpty(nameParser.WindowText))
@@ -451,13 +466,18 @@ namespace ShareX
             //{
             //    fileName = nameParser.Parse(taskSettings.UploadSettings.NameFormatPattern);
             //}
-            fileName = DateTime.Now.ToString("yy-MM-dd-HH-mm-ss-ffff");
+
+
+
+            fileName += DateTime.Now.ToString("MMddHHmmssf");
             Program.Settings.NameParserAutoIncrementNumber = nameParser.AutoIncrementNumber;
 
             if (!string.IsNullOrEmpty(extension))
             {
                 fileName += "." + extension.TrimStart('.');
             }
+            var invalidFileName = Path.GetInvalidFileNameChars();
+            fileName = invalidFileName.Aggregate(fileName, (o, r) => (o.Replace(r.ToString(), string.Empty)));
 
             return fileName;
         }
@@ -729,7 +749,7 @@ namespace ShareX
 
         public static void OpenHistory()
         {
-            HistoryForm historyForm = new HistoryForm(Program.HistoryFilePath, Program.Settings.HistorySettings,
+            HistoryForm historyForm = new HistoryForm(Program.ScreenshotsParentFolder, Program.Settings.HistorySettings,
                 filePath => UploadManager.UploadFile(filePath),
                 filePath => AnnotateImageFromFile(filePath),
                 filePath => PinToScreen(filePath));
@@ -739,7 +759,7 @@ namespace ShareX
 
         public static void OpenImageHistory()
         {
-            ImageHistoryForm imageHistoryForm = new ImageHistoryForm(Program.HistoryFilePath, Program.Settings.ImageHistorySettings,
+            ImageHistoryForm imageHistoryForm = new ImageHistoryForm(Program.ScreenshotsParentFolder, Program.Settings.ImageHistorySettings,
                 filePath => UploadManager.UploadFile(filePath),
                 filePath => AnnotateImageFromFile(filePath),
                 filePath => PinToScreen(filePath));
