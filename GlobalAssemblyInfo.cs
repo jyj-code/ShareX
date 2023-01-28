@@ -26,7 +26,7 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyCompany("ShareX Team")]
+[assembly: AssemblyCompany("ShareX Team By Jyj")]
 [assembly: AssemblyProduct("ShareX")]
 [assembly: AssemblyCopyright("Copyright (c) 2007-2023 ShareX Team")]
 [assembly: ComVisible(false)]
