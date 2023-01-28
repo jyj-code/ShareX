@@ -122,21 +122,24 @@
     <value>MiddleLeft</value>
   </data>
   <data name="btnFromFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 88</value>
+    <value>9, 110</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnFromFile.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
   <data name="btnFromFile.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 0, 0</value>
   </data>
   <data name="btnFromFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 32</value>
+    <value>333, 40</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnFromFile.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="btnFromFile.Text" xml:space="preserve">
-    <value>Pin to screen from file...</value>
+    <value>文件贴到屏幕</value>
   </data>
   <data name="btnFromFile.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -160,19 +163,22 @@
     <value>MiddleLeft</value>
   </data>
   <data name="btnFromClipboard.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 48</value>
+    <value>9, 60</value>
+  </data>
+  <data name="btnFromClipboard.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="btnFromClipboard.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 0, 0</value>
   </data>
   <data name="btnFromClipboard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 32</value>
+    <value>333, 40</value>
   </data>
   <data name="btnFromClipboard.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="btnFromClipboard.Text" xml:space="preserve">
-    <value>Pin to screen from clipboard</value>
+    <value>剪切板贴屏幕</value>
   </data>
   <data name="btnFromClipboard.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -196,19 +202,22 @@
     <value>MiddleLeft</value>
   </data>
   <data name="btnFromScreen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 8</value>
+    <value>9, 10</value>
+  </data>
+  <data name="btnFromScreen.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="btnFromScreen.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 0, 0</value>
   </data>
   <data name="btnFromScreen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 32</value>
+    <value>333, 40</value>
   </data>
   <data name="btnFromScreen.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="btnFromScreen.Text" xml:space="preserve">
-    <value>Pin to screen from screen...</value>
+    <value>截图固定到屏幕</value>
   </data>
   <data name="btnFromScreen.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -232,19 +241,22 @@
     <value>MiddleLeft</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 128</value>
+    <value>9, 160</value>
+  </data>
+  <data name="btnCancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="btnCancel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 0, 0</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 32</value>
+    <value>333, 40</value>
   </data>
   <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
   <data name="btnCancel.Text" xml:space="preserve">
-    <value>Cancel</value>
+    <value>取消</value>
   </data>
   <data name="btnCancel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -268,22 +280,22 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
+    <value>9, 20</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>313, 169</value>
+    <value>352, 211</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>4, 5, 4, 5</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>ShareX - Pin to screen</value>
+    <value>固定到屏幕</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>PinToScreenStartupForm</value>

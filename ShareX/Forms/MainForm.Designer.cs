@@ -395,6 +395,7 @@
             resources.ApplyResources(this.tsMain, "tsMain");
             this.tsMain.DrawCustomBorder = true;
             this.tsMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tsMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.tsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsddbCapture,
             this.tsddbUpload,
@@ -1079,6 +1080,7 @@
             // 
             // cmsTaskInfo
             // 
+            this.cmsTaskInfo.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.cmsTaskInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiShowErrors,
             this.tsmiStopUpload,
@@ -1541,6 +1543,7 @@
             // 
             // cmsTray
             // 
+            this.cmsTray.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.cmsTray.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiTrayCapture,
             this.tsmiTrayUpload,
