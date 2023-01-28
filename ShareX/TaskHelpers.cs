@@ -443,15 +443,15 @@ namespace ShareX
                 nameParser.ProcessName = metadata.ProcessName;
             }
 
-            if (!string.IsNullOrEmpty(taskSettings.UploadSettings.NameFormatPatternActiveWindow) && !string.IsNullOrEmpty(nameParser.WindowText))
-            {
-                fileName = nameParser.Parse(taskSettings.UploadSettings.NameFormatPatternActiveWindow);
-            }
-            else
-            {
-                fileName = nameParser.Parse(taskSettings.UploadSettings.NameFormatPattern);
-            }
-
+            //if (!string.IsNullOrEmpty(taskSettings.UploadSettings.NameFormatPatternActiveWindow) && !string.IsNullOrEmpty(nameParser.WindowText))
+            //{
+            //    fileName = nameParser.Parse(taskSettings.UploadSettings.NameFormatPatternActiveWindow);
+            //}
+            //else
+            //{
+            //    fileName = nameParser.Parse(taskSettings.UploadSettings.NameFormatPattern);
+            //}
+            fileName = DateTime.Now.ToString("yy-MM-dd-HH-mm-ss-ffff");
             Program.Settings.NameParserAutoIncrementNumber = nameParser.AutoIncrementNumber;
 
             if (!string.IsNullOrEmpty(extension))

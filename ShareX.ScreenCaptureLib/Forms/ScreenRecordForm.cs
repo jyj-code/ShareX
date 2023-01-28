@@ -127,6 +127,7 @@ namespace ShareX.ScreenCaptureLib
             RecordResetEvent = new ManualResetEvent(false);
 
             ChangeState(ScreenRecordState.Waiting);
+            btnPause.Text = Resources.Resume;
         }
 
         protected override void Dispose(bool disposing)

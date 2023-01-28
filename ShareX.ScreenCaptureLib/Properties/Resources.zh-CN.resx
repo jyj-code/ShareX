@@ -443,7 +443,7 @@
     <value>正在处理...</value>
   </data>
   <data name="ScreenRecordForm_ConfirmCancel" xml:space="preserve">
-    <value>确定终止此录制？</value>
+    <value>确定终止此录制？选择是此文件将丢弃</value>
   </data>
   <data name="ScreenRecordForm_Start" xml:space="preserve">
     <value>开始</value>
@@ -461,7 +461,7 @@
     <value>请稍候...</value>
   </data>
   <data name="ScreenRecordForm_Stop" xml:space="preserve">
-    <value>停止</value>
+    <value>结束</value>
   </data>
   <data name="ShapeManager_ArrowHeadDirection" xml:space="preserve">
     <value>箭头头部方向：</value>
