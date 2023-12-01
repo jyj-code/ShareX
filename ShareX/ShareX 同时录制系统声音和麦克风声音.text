@@ -1,0 +1,3 @@
+﻿最终解决方案
+1.在上面音频源选择的地方，选择你的麦克风
+2.将 -f dshow -i audio="virtual-audio-capturer" -filter_complex amix=inputs=2:duration=longest 添加到额外的命令行参数中

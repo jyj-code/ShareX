@@ -2077,6 +2077,7 @@
     <None Include="Resources\image-resize-actual.png" />
     <None Include="Resources\it.png" />
     <None Include="Resources\tw.png" />
+    <None Include="ShareX 同时录制系统声音和麦克风声音.text" />
     <None Include="ShareX_Icon.ico" />
     <None Include="Resources\globe--pencil.png" />
     <None Include="Resources\camcorder--pencil.png" />
@@ -2199,6 +2200,9 @@
   <ItemGroup>
     <Content Include="ffmpeg.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Recorder-devices-setup.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
